@@ -1,14 +1,22 @@
 [gd_scene format=3 uid="uid://dgfph5hoyxpul"]
 
 [ext_resource type="Script" uid="uid://y55fyv8472hx" path="res://scripts/player_input_handler.gd" id="1_h6be7"]
+[ext_resource type="Script" uid="uid://3nlqw06iwnd4" path="res://scripts/game_manager.gd" id="1_j6f26"]
 [ext_resource type="PackedScene" uid="uid://b44kh0dfkfgyw" path="res://core-scenes/creature.tscn" id="1_x0mfn"]
 [ext_resource type="PackedScene" uid="uid://4dnxglxlwrey" path="res://core-scenes/square.tscn" id="2_lp1mt"]
+[ext_resource type="PackedScene" uid="uid://c1r0lkxrka7nh" path="res://core-scenes/projectile.tscn" id="5_1opnj"]
+[ext_resource type="Texture2D" uid="uid://b7dpaxcnpq5iw" path="res://sprites/square_31.png" id="7_kvclw"]
+[ext_resource type="Script" uid="uid://db8l65ojltvc3" path="res://scripts/blaster.gd" id="8_wvdjy"]
 
 [node name="MainScene" type="Node2D" unique_id=148360280]
 
-[node name="PlayerInputHandler" type="Node2D" parent="." unique_id=1444398628 node_paths=PackedStringArray("player_creature")]
+[node name="GameManager" type="Node2D" parent="." unique_id=1964262786]
+script = ExtResource("1_j6f26")
+
+[node name="PlayerInputHandler" type="Node2D" parent="." unique_id=1444398628 node_paths=PackedStringArray("player_creature", "game_manager")]
 script = ExtResource("1_h6be7")
 player_creature = NodePath("../Creatures/Creature")
+game_manager = NodePath("../GameManager")
 
 [node name="Squares" type="Node2D" parent="." unique_id=312202938]
 position = Vector2(248, -31)
@@ -34,19 +42,19 @@ position = Vector2(62, -31)
 [node name="Square9" parent="Squares" unique_id=702395468 instance=ExtResource("2_lp1mt")]
 position = Vector2(124, -31)
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=745856702]
+
 [node name="Creatures" type="Node2D" parent="." unique_id=1023471411]
 
-[node name="Creature" parent="Creatures" unique_id=591080971 instance=ExtResource("1_x0mfn")]
-position = Vector2(-217, -124)
+[node name="Creature" parent="Creatures" unique_id=591080971 node_paths=PackedStringArray("current_blaster") instance=ExtResource("1_x0mfn")]
 is_player_creature = true
+current_blaster = NodePath("Blaster")
 
-[node name="Camera2D" type="Camera2D" parent="Creatures/Creature" unique_id=745856702]
+[node name="Blaster" type="Sprite2D" parent="Creatures/Creature" unique_id=1958319072]
+position = Vector2(0, -35)
+scale = Vector2(0.11290322, 1)
+texture = ExtResource("7_kvclw")
+script = ExtResource("8_wvdjy")
+projectile_ps = ExtResource("5_1opnj")
 
-[node name="Creature2" parent="Creatures" unique_id=415781085 instance=ExtResource("1_x0mfn")]
-position = Vector2(-213.5, -57.5)
-
-[node name="Creature3" parent="Creatures" unique_id=971472173 instance=ExtResource("1_x0mfn")]
-position = Vector2(-139.5, -139.5)
-
-[node name="Creature4" parent="Creatures" unique_id=690933606 instance=ExtResource("1_x0mfn")]
-position = Vector2(-103.5, -41.5)
+[node name="ProjectileManager" type="Node2D" parent="." unique_id=1171213707]
