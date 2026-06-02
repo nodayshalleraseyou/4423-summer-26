@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://dgfph5hoyxpul"]
+
+[ext_resource type="Script" uid="uid://y55fyv8472hx" path="res://scripts/player_input_handler.gd" id="1_h6be7"]
+[ext_resource type="PackedScene" uid="uid://b44kh0dfkfgyw" path="res://core-scenes/creature.tscn" id="1_x0mfn"]
+[ext_resource type="PackedScene" uid="uid://4dnxglxlwrey" path="res://core-scenes/square.tscn" id="2_lp1mt"]
+
+[node name="MainScene" type="Node2D" unique_id=148360280]
+
+[node name="PlayerInputHandler" type="Node2D" parent="." unique_id=1444398628 node_paths=PackedStringArray("player_creature")]
+script = ExtResource("1_h6be7")
+player_creature = NodePath("../Creatures/Creature")
+
+[node name="Squares" type="Node2D" parent="." unique_id=312202938]
+position = Vector2(248, -31)
+
+[node name="Square3" parent="Squares" unique_id=243153227 instance=ExtResource("2_lp1mt")]
+position = Vector2(62, -93)
+
+[node name="Square4" parent="Squares" unique_id=915414948 instance=ExtResource("2_lp1mt")]
+position = Vector2(93, -93)
+
+[node name="Square5" parent="Squares" unique_id=1516691277 instance=ExtResource("2_lp1mt")]
+position = Vector2(124, -93)
+
+[node name="Square6" parent="Squares" unique_id=1343733915 instance=ExtResource("2_lp1mt")]
+position = Vector2(124, -62)
+
+[node name="Square7" parent="Squares" unique_id=2079241526 instance=ExtResource("2_lp1mt")]
+position = Vector2(62, -62)
+
+[node name="Square8" parent="Squares" unique_id=2137069983 instance=ExtResource("2_lp1mt")]
+position = Vector2(62, -31)
+
+[node name="Square9" parent="Squares" unique_id=702395468 instance=ExtResource("2_lp1mt")]
+position = Vector2(124, -31)
+
+[node name="Creatures" type="Node2D" parent="." unique_id=1023471411]
+
+[node name="Creature" parent="Creatures" unique_id=591080971 instance=ExtResource("1_x0mfn")]
+position = Vector2(-217, -124)
+is_player_creature = true
+
+[node name="Camera2D" type="Camera2D" parent="Creatures/Creature" unique_id=745856702]
+
+[node name="Creature2" parent="Creatures" unique_id=415781085 instance=ExtResource("1_x0mfn")]
+position = Vector2(-213.5, -57.5)
+
+[node name="Creature3" parent="Creatures" unique_id=971472173 instance=ExtResource("1_x0mfn")]
+position = Vector2(-139.5, -139.5)
+
+[node name="Creature4" parent="Creatures" unique_id=690933606 instance=ExtResource("1_x0mfn")]
+position = Vector2(-103.5, -41.5)
