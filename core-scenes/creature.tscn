@@ -1,24 +1,17 @@
-[gd_scene format=3 uid="uid://b44kh0dfkfgyw"]
+[gd_scene format=3 uid="uid://c3qtrgr8b7t1o"]
 
-[ext_resource type="Texture2D" uid="uid://dlr38jjtoh827" path="res://sprites/creature_31.png" id="1_pqc3a"]
 [ext_resource type="Script" uid="uid://ddi0fup2gh7us" path="res://scripts/creature.gd" id="2_6bpdb"]
-[ext_resource type="Texture2D" uid="uid://b7dpaxcnpq5iw" path="res://sprites/square_31.png" id="2_pd5d6"]
+[ext_resource type="Texture2D" uid="uid://tcbvvsvfedpr" path="res://sprites/cyclops.png" id="2_pd5d6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6bpdb"]
-size = Vector2(14, 28)
+size = Vector2(25, 28)
 
 [node name="Creature" type="Area2D" unique_id=1103107907]
 script = ExtResource("2_6bpdb")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=483467125]
-modulate = Color(0.03254274, 0.7552077, 0.90184057, 1)
-position = Vector2(8, -1)
-scale = Vector2(0.048387095, 1)
-texture = ExtResource("2_pd5d6")
-
 [node name="BodySprite" type="Sprite2D" parent="." unique_id=234329956]
-modulate = Color(0.03254274, 0.7552077, 0.90184057, 1)
-texture = ExtResource("1_pqc3a")
+modulate = Color(0.52211124, 0.89317214, 0.9992078, 1)
+texture = ExtResource("2_pd5d6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1308798709]
 shape = SubResource("RectangleShape2D_6bpdb")

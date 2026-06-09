@@ -11,8 +11,6 @@ var game_manager : GameManager
 var birth_name : String = "Meepis"
 var counter : int = 0
 
-
-
 #tracked data
 var current_pos : Vector2i
 var next_pos: Vector2i
@@ -23,6 +21,9 @@ var current_health : int = 3
 #inventory
 @export var current_blaster : Blaster
 
+
+#
+@export var team : String
 
 
 # Called when the node enters the scene tree for the first time.
@@ -46,9 +47,12 @@ func move_increment(dir : Vector2):
 func move_slide(dir : Vector2):
 	global_position += dir.normalized() * speed * get_process_delta_time()
 
-func move(dir : Vector2i):
+func move(dir : Vector2i) -> bool:
+	if !game_manager.can_move_to(current_pos+dir):
+		return false
 	next_pos += dir
-	print(next_pos)
+	print(next_pos) 
+	return true
 	
 	
 func finalize_move():
@@ -63,6 +67,11 @@ func take_damage(amount : int):
 	
 func use_blaster():
 	if is_instance_valid(current_blaster):
-		current_blaster.use()
+		current_blaster.use(self)
+	
+func aim_blaster(pos : Vector2):
+	if is_instance_valid(current_blaster):
+		current_blaster.aim(pos)
+	
 	
 	

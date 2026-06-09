@@ -1,16 +1,18 @@
 [gd_scene format=3 uid="uid://c1r0lkxrka7nh"]
 
 [ext_resource type="Script" uid="uid://85c5iku8fylu" path="res://scripts/projectile.gd" id="1_8g325"]
-[ext_resource type="Texture2D" uid="uid://b7dpaxcnpq5iw" path="res://sprites/square_31.png" id="1_mk0cm"]
+[ext_resource type="Texture2D" uid="uid://bsts86n1v04pl" path="res://sprites/bullet_15.png" id="2_8g325"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j6f26"]
-size = Vector2(32, 32)
+size = Vector2(8, 13.5)
 
 [node name="Projectile" type="Area2D" unique_id=417648964]
 script = ExtResource("1_8g325")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=792410394]
-texture = ExtResource("1_mk0cm")
+modulate = Color(1, 0.9333334, 0, 1)
+texture = ExtResource("2_8g325")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1494444825]
+position = Vector2(0, 0.25)
 shape = SubResource("RectangleShape2D_j6f26")

@@ -10,11 +10,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	player_creature.aim_blaster(get_global_mouse_position())
+
 	if game_manager.taking_turn:
 		return
 	
 	if Input.is_action_just_pressed("use"):
 		player_creature.use_blaster()
+		game_manager.take_turn()
+		return
+
 	scan_movement()
 
 
@@ -30,8 +35,10 @@ func scan_movement():
 		dir += Vector2(1,0)
 	if dir == Vector2.ZERO:
 		return
-	player_creature.move(dir)
-	game_manager.take_turn()
+
+	if player_creature.move(dir):
+		game_manager.take_turn()
+	print(player_creature.current_pos, " ", player_creature.next_pos)
 
 	
 
