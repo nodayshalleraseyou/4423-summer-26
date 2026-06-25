@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var player_creature : Creature
+
 @export var game_manager : GameManager
 
 # Called when the node enters the scene tree for the first time.
@@ -10,13 +10,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	player_creature.aim_blaster(get_global_mouse_position())
+	game_manager.player_creature.aim_blaster(get_global_mouse_position())
 
 	if game_manager.taking_turn:
 		return
-	
-	if Input.is_action_just_pressed("use"):
-		player_creature.use_blaster()
+	if Input.is_action_just_pressed("reload"):
+		game_manager.player_creature.reload_blaster()
+		game_manager.take_turn()
+		return
+	if Input.is_action_pressed("use"):
+		game_manager.player_creature.use_blaster()
 		game_manager.take_turn()
 		return
 
@@ -36,21 +39,20 @@ func scan_movement():
 	if dir == Vector2.ZERO:
 		return
 
-	if player_creature.move(dir):
+	if game_manager.player_creature.move(dir):
 		game_manager.take_turn()
-	print(player_creature.current_pos, " ", player_creature.next_pos)
 
 	
 
 func scan_movement_increment():
 	if Input.is_action_just_pressed("up"):
-		player_creature.move_increment(Vector2(0,-1))	
+		game_manager.player_creature.move_increment(Vector2(0,-1))	
 	if Input.is_action_just_pressed("down"):
-		player_creature.move_increment(Vector2(0,1))	
+		game_manager.player_creature.move_increment(Vector2(0,1))	
 	if Input.is_action_just_pressed("left"):
-		player_creature.move_increment(Vector2(-1,0))	
+		game_manager.player_creature.move_increment(Vector2(-1,0))	
 	if Input.is_action_just_pressed("right"):
-		player_creature.move_increment(Vector2(1,0))	
+		game_manager.player_creature.move_increment(Vector2(1,0))	
 
 func scan_movement_slide():
 	var dir : Vector2 = Vector2.ZERO
@@ -63,5 +65,8 @@ func scan_movement_slide():
 	if Input.is_action_pressed("right"):
 		dir += Vector2(1,0)
 	if dir != Vector2.ZERO:
-		player_creature.move_slide(dir)	
+		game_manager.player_creature.move_slide(dir)	
+		
+		
+
 	

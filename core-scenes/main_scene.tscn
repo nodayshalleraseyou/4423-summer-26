@@ -1,126 +1,38 @@
-[gd_scene format=4 uid="uid://dgfph5hoyxpul"]
+[gd_scene format=3 uid="uid://dgfph5hoyxpul"]
 
+[ext_resource type="AudioStream" uid="uid://x4jye5dly00d" path="res://audio/in_love_with_toast_soundtrack.ogg" id="1_4xu26"]
 [ext_resource type="Script" uid="uid://y55fyv8472hx" path="res://scripts/player_input_handler.gd" id="1_h6be7"]
 [ext_resource type="Script" uid="uid://3nlqw06iwnd4" path="res://scripts/game_manager.gd" id="1_j6f26"]
-[ext_resource type="PackedScene" uid="uid://c3qtrgr8b7t1o" path="res://core-scenes/creature.tscn" id="1_x0mfn"]
-[ext_resource type="Script" uid="uid://cq1t8mmispl7h" path="res://scripts/zone.gd" id="3_4xu26"]
+[ext_resource type="PackedScene" uid="uid://b0k7ce6rxgxvh" path="res://zones/start_zone.tscn" id="4_06n6w"]
 [ext_resource type="PackedScene" uid="uid://dfo7u0ynn4dug" path="res://core-scenes/blaster.tscn" id="5_1opnj"]
 [ext_resource type="Script" uid="uid://di3mvq11pj30e" path="res://scripts/aim_guide.gd" id="6_kvclw"]
+[ext_resource type="PackedScene" uid="uid://cevq1x1pvwd2b" path="res://player_creature.tscn" id="7_4xu26"]
 [ext_resource type="Texture2D" uid="uid://b7dpaxcnpq5iw" path="res://sprites/square_31.png" id="7_kvclw"]
-[ext_resource type="PackedScene" uid="uid://dkfohijeleyhm" path="res://core-scenes/creature_turret.tscn" id="7_orlgk"]
 [ext_resource type="Script" uid="uid://c0p8frkmu7by5" path="res://scripts/projectile_manager.gd" id="8_wvdjy"]
-[ext_resource type="Texture2D" uid="uid://ccu8ve5b8iwv" path="res://simple_tileset.png" id="10_4xu26"]
 [ext_resource type="Texture2D" uid="uid://dhubr3abgg1ws" path="res://Screenshot_20260609_002520.png" id="10_06n6w"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dpbtt"]
-texture = ExtResource("10_4xu26")
-texture_region_size = Vector2i(31, 31)
-0:0/0 = 0
-1:0/0 = 0
-2:0/next_alternative_id = 2
-2:0/0 = 0
-2:0/1 = 1
-2:0/1/modulate = Color(0.79563636, 0.5379511, 0.78843427, 1)
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-2:1/0/modulate = Color(0.54509807, 0.63529414, 0.60784316, 1)
-3:1/0 = 0
-3:1/0/modulate = Color(0.84, 0, 0.4060002, 1)
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-1:2/0 = 0
-1:2/0/modulate = Color(0.54901963, 0.6039216, 0.6313726, 1)
-2:2/0 = 0
-2:2/0/modulate = Color(0.54901963, 0.6039216, 0.6313726, 1)
-3:2/0 = 0
-3:2/0/modulate = Color(0.54901963, 0.6039216, 0.6313726, 1)
-4:2/0 = 0
-5:2/0 = 0
-6:2/0 = 0
-0:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-4:3/0 = 0
-6:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-6:4/0 = 0
-0:5/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-3:5/0 = 0
-4:5/0 = 0
-5:5/0 = 0
-6:5/0 = 0
-0:6/0 = 0
-1:6/0 = 0
-2:6/0 = 0
-3:6/0 = 0
-4:6/0 = 0
-5:6/0 = 0
-6:6/0 = 0
-1:3/0 = 0
-0:2/0 = 0
-0:2/0/modulate = Color(0.54901963, 0.6039216, 0.6313726, 1)
-
-[sub_resource type="TileSet" id="TileSet_4pdor"]
-tile_size = Vector2i(31, 31)
-sources/0 = SubResource("TileSetAtlasSource_dpbtt")
+[ext_resource type="PackedScene" uid="uid://jdnbxgt42vwm" path="res://ui/player_hud.tscn" id="11_4xu26"]
 
 [node name="MainScene" type="Node2D" unique_id=148360280]
 
-[node name="PlayerInputHandler" type="Node2D" parent="." unique_id=1444398628 node_paths=PackedStringArray("player_creature", "game_manager")]
+[node name="MusicBox" type="AudioStreamPlayer2D" parent="." unique_id=1836176500]
+visible = false
+stream = ExtResource("1_4xu26")
+volume_db = -80.0
+autoplay = true
+
+[node name="PlayerInputHandler" type="Node2D" parent="." unique_id=1444398628 node_paths=PackedStringArray("game_manager")]
 script = ExtResource("1_h6be7")
-player_creature = NodePath("../Creatures/Creature")
 game_manager = NodePath("../GameManager")
 
-[node name="GameManager" type="Node2D" parent="." unique_id=1964262786 node_paths=PackedStringArray("projectile_manager", "current_zone")]
+[node name="GameManager" type="Node2D" parent="." unique_id=1964262786 node_paths=PackedStringArray("projectile_manager", "camera", "player_creature", "current_zone")]
+position = Vector2(-1, 0)
 script = ExtResource("1_j6f26")
 projectile_manager = NodePath("../ProjectileManager")
-current_zone = NodePath("../Zone")
+camera = NodePath("../Camera2D")
+player_creature = NodePath("../Creatures/PlayerCreature")
+current_zone = NodePath("../start_zone")
 
-[node name="Zone" type="Node2D" parent="." unique_id=1357713269 node_paths=PackedStringArray("wall_layer")]
-script = ExtResource("3_4xu26")
-wall_layer = NodePath("WallLayer")
-
-[node name="Sprite2D" type="Sprite2D" parent="Zone" unique_id=1772572966]
-modulate = Color(0.3529412, 0.44313726, 0.41568628, 1)
-position = Vector2(1.0967255e-05, -1.6450882e-05)
-scale = Vector2(16.967741, 16.967743)
-texture = ExtResource("7_kvclw")
-
-[node name="Boundary" type="TileMapLayer" parent="Zone" unique_id=1984328570]
-visible = false
-position = Vector2(-15.5, -15.5)
-tile_map_data = PackedByteArray("AAD4//j/AAACAAAAAAD4//n/AAACAAAAAAD4//r/AAACAAAAAAD4//v/AAACAAAAAAD4//z/AAACAAAAAAD4//3/AAACAAAAAAD4//7/AAACAAAAAAD4/wEAAAACAAAAAAD4/wIAAAACAAAAAAD4/wMAAAACAAAAAAD4/wQAAAACAAAAAAD4/wUAAAACAAAAAAD4/wYAAAACAAAAAAD4/wcAAAACAAAAAAAIAPj/AAACAAAAAAAIAPn/AAACAAAAAAAIAPr/AAACAAAAAAAIAPv/AAACAAAAAAAIAPz/AAACAAAAAAAIAP3/AAACAAAAAAAIAP7/AAACAAAAAAAIAAEAAAACAAAAAAAIAAIAAAACAAAAAAAIAAMAAAACAAAAAAAIAAQAAAACAAAAAAAIAAUAAAACAAAAAAAIAAYAAAACAAAAAAAIAAcAAAACAAAAAAD4////AAACAAAAAAD4/wgAAAACAAAAAAD5//j/AAACAAAAAAD5/wgAAAACAAAAAAD6//j/AAACAAAAAAD6/wgAAAACAAAAAAD7//j/AAACAAAAAAD7/wgAAAACAAAAAAD8//j/AAACAAAAAAD8/wgAAAACAAAAAAD9//j/AAACAAAAAAD9/wgAAAACAAAAAAD+//j/AAACAAAAAAD+/wgAAAACAAAAAAD///j/AAACAAAAAAD//wgAAAACAAAAAAABAPj/AAACAAAAAAABAAgAAAACAAAAAAACAPj/AAACAAAAAAACAAgAAAACAAAAAAADAPj/AAACAAAAAAADAAgAAAACAAAAAAAEAPj/AAACAAAAAAAEAAgAAAACAAAAAAAFAPj/AAACAAAAAAAFAAgAAAACAAAAAAAGAPj/AAACAAAAAAAGAAgAAAACAAAAAAAHAPj/AAACAAAAAAAHAAgAAAACAAAAAAAIAP//AAACAAAAAAAIAAgAAAACAAAAAAA=")
-tile_set = SubResource("TileSet_4pdor")
-
-[node name="WallLayer" type="TileMapLayer" parent="Zone" unique_id=1512664308]
-modulate = Color(0.69803923, 0.80784315, 0.87058824, 1)
-position = Vector2(-15.5, -15.5)
-tile_map_data = PackedByteArray("AAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAABAAIAAAAAAAAAAAACAP//AAABAAAAAAACAAAAAAABAAAAAAACAAEAAAABAAAAAAACAAIAAAAAAAAAAAACAP3/AAAAAAAAAAACAPz/AAABAAAAAAAGAPz/AAABAAAAAAAGAP3/AAABAAAAAAAGAP7/AAABAAAAAAAGAP//AAABAAAAAAAGAAAAAAABAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAADAPz/AAAAAAAAAAAEAPz/AAAAAAAAAAAFAPz/AAAAAAAAAAD+//v/AAAAAAAAAAD///v/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPv/AAAAAAAAAAD9/wIAAAAAAAAAAAD9/wAAAAABAAAAAAD9////AAABAAAAAAD9//7/AAABAAAAAAD9/wEAAAABAAAAAAD9//3/AAABAAAAAAD9//z/AAABAAAAAAD9//v/AAABAAAAAAACAPv/AAABAAAAAAA=")
-tile_set = SubResource("TileSet_4pdor")
-
-[node name="BaseFloorLayer" type="TileMapLayer" parent="Zone" unique_id=1622238227]
-visible = false
-position = Vector2(-15.5, -15.5)
-tile_map_data = PackedByteArray("AAD+//3/AAACAAAAAQADAP7/AAACAAAAAQABAPz/AAACAAAAAQD//wAAAAACAAAAAQAFAAAAAAACAAAAAQAAAAEAAAACAAAAAQA=")
-tile_set = SubResource("TileSet_4pdor")
-
-[node name="FloorLayer" type="TileMapLayer" parent="Zone" unique_id=137100247]
-position = Vector2(-15.5, -15.5)
-tile_map_data = PackedByteArray("AAAAAPz/AAABAAIAAAAAAP3/AAADAAIAAAAAAP7/AAABAAIAAAAAAP//AAADAAIAAAAAAAAAAAABAAIAAAAAAAEAAAADAAIAAAABAPz/AAADAAIAAAABAP3/AAABAAIAAAABAP7/AAADAAIAAAABAP//AAABAAIAAAABAAAAAAADAAIAAAABAAEAAAABAAIAAAACAP7/AAABAAIAAAADAP3/AAABAAIAAAADAP7/AAADAAIAAAADAAAAAAADAAIAAAAEAP7/AAABAAIAAAAFAP3/AAABAAIAAAAFAP7/AAADAAIAAAAFAAAAAAADAAIAAAD+//z/AAABAAIAAAD+//3/AAADAAIAAAD+//7/AAABAAIAAAD+////AAADAAIAAAD+/wAAAAABAAIAAAD+/wEAAAADAAIAAAD///z/AAADAAIAAAD///3/AAABAAIAAAD///7/AAADAAIAAAD/////AAABAAIAAAD//wAAAAADAAIAAAD//wEAAAABAAIAAAAEAP3/AAADAAIAAAAEAP//AAADAAIAAAAEAAAAAAABAAIAAAAFAP//AAABAAIAAAADAP//AAABAAIAAAD8/wUAAAAAAAEAAAD9/wUAAAAAAAEAAAD9/wQAAAAAAAEAAAD+/wUAAAAAAAEAAAAGAAQAAAADAAEAAAAFAAQAAAADAAEAAAAFAAUAAAADAAEAAAAEAAUAAAADAAEAAAADAAUAAAADAAEAAAAAAAUAAAADAAEAAAAAAAQAAAADAAEAAAABAAQAAAADAAEAAAACAAQAAAADAAEAAAACAAUAAAADAAEAAAACAAYAAAADAAEAAAABAAYAAAADAAEAAAD7/wQAAAACAAEAAAD6/wQAAAACAAEAAAD6/wMAAAACAAEAAAD7/wIAAAACAAEAAAD6/wIAAAACAAEAAAD6/wEAAAACAAEAAAD5/wEAAAACAAEAAAAEAPr/AAACAAEAAAAEAPv/AAACAAEAAAAFAPv/AAACAAEAAAAGAPr/AAACAAEAAAAFAPr/AAACAAEAAAAFAPn/AAACAAEAAAD7//r/AAACAAEAAAD6//r/AAACAAEAAAD6//v/AAACAAEAAAD7//v/AAACAAEAAAD7//z/AAACAAEAAAD6//z/AAACAAEAAAD8/wcAAAACAAEAAAD7/wcAAAACAAEAAAD6/wcAAAACAAEAAAAEAAMAAAACAAEAAAAFAAMAAAACAAEAAAAFAAIAAAACAAEAAAAGAAcAAAACAAEAAAAFAAcAAAACAAEAAAA=")
-tile_set = SubResource("TileSet_4pdor")
+[node name="start_zone" parent="." unique_id=1533148381 instance=ExtResource("4_06n6w")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=745856702]
 zoom = Vector2(2, 2)
@@ -150,8 +62,9 @@ scale = Vector2(44.451622, 11.962628)
 texture = ExtResource("7_kvclw")
 
 [node name="AimGuide" type="Node2D" parent="." unique_id=313500541 node_paths=PackedStringArray("player_creature")]
+visible = false
 script = ExtResource("6_kvclw")
-player_creature = NodePath("../Creatures/Creature")
+player_creature = NodePath("../Creatures/PlayerCreature")
 
 [node name="RightPivot" type="Node2D" parent="AimGuide" unique_id=1725368708]
 
@@ -171,15 +84,11 @@ texture = ExtResource("7_kvclw")
 [node name="Creatures" type="Node2D" parent="." unique_id=1023471411]
 metadata/_edit_group_ = true
 
-[node name="Creature" parent="Creatures" unique_id=591080971 node_paths=PackedStringArray("current_blaster") instance=ExtResource("1_x0mfn")]
+[node name="PlayerCreature" parent="Creatures" unique_id=1103107907 node_paths=PackedStringArray("current_blaster") instance=ExtResource("7_4xu26")]
 is_player_creature = true
 current_blaster = NodePath("Blaster")
-team = "player"
 
-[node name="Blaster" parent="Creatures/Creature" unique_id=77867254 instance=ExtResource("5_1opnj")]
-
-[node name="Creature_Turret" parent="Creatures" unique_id=1103107907 instance=ExtResource("7_orlgk")]
-position = Vector2(-217, -93)
+[node name="Blaster" parent="Creatures/PlayerCreature" unique_id=77867254 instance=ExtResource("5_1opnj")]
 
 [node name="ProjectileManager" type="Node2D" parent="." unique_id=1171213707]
 script = ExtResource("8_wvdjy")
@@ -187,3 +96,5 @@ script = ExtResource("8_wvdjy")
 [node name="Screenshot20260609002520" type="Sprite2D" parent="." unique_id=773708893]
 position = Vector2(-3081, 1035)
 texture = ExtResource("10_06n6w")
+
+[node name="PlayerHUD" parent="." unique_id=471060538 instance=ExtResource("11_4xu26")]

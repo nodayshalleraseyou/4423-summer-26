@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ch4l0elmk0grd"]
+
+[ext_resource type="Script" uid="uid://isl68skqtixw" path="res://scripts/health_bar.gd" id="1_prk0l"]
+[ext_resource type="PackedScene" uid="uid://cs5wcrnqy5ej7" path="res://ui/heart_container.tscn" id="1_rwxrv"]
+
+[node name="HealthBar" type="HBoxContainer" unique_id=416242004]
+offset_left = 30.999998
+offset_top = 30.999998
+offset_right = 4267.0
+offset_bottom = 679.0
+scale = Vector2(0.05, 0.05)
+theme_override_constants/separation = 260
+script = ExtResource("1_prk0l")
+full_color = Color(0.96, 0.14399998, 0.3343998, 1)
+empty_color = Color(0.3403393, 0.34033933, 0.3403393, 1)
+heart_container_ps = ExtResource("1_rwxrv")
+
+[node name="HeartContainer" parent="." unique_id=3452615 instance=ExtResource("1_rwxrv")]
+layout_mode = 2
+
+[node name="HeartContainer2" parent="." unique_id=863428882 instance=ExtResource("1_rwxrv")]
+layout_mode = 2
+
+[node name="HeartContainer3" parent="." unique_id=637486606 instance=ExtResource("1_rwxrv")]
+layout_mode = 2

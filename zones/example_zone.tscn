@@ -1,0 +1,18 @@
+[gd_scene format=4 uid="uid://bwvrk27bhdi6h"]
+
+[ext_resource type="PackedScene" uid="uid://d187ceufbpja3" path="res://core-scenes/zone.tscn" id="1_xo6lx"]
+
+[node name="example_zone" unique_id=1533148381 instance=ExtResource("1_xo6lx")]
+up_zone = "start_zone"
+down_zone = "start_zone"
+left_zone = "start_zone"
+right_zone = "start_zone"
+
+[node name="WallLayer" parent="." index="2" unique_id=1960374683]
+visible = true
+
+[node name="FloorLayer" parent="." index="4" unique_id=2072416163]
+visible = true
+tile_map_data = PackedByteArray("AAD5////AAACAAEAAAD6////AAACAAEAAAD6//7/AAACAAEAAAD7//7/AAACAAEAAAD8//3/AAACAAEAAAD9//z/AAACAAEAAAD+//v/AAACAAEAAAD///v/AAACAAEAAAD///z/AAACAAEAAAD+//z/AAACAAEAAAD+//3/AAACAAEAAAD+//7/AAACAAEAAAD9////AAACAAEAAAD9/wAAAAACAAEAAAD+////AAACAAEAAAD/////AAACAAEAAAD///7/AAACAAEAAAAAAP7/AAACAAEAAAAAAP//AAACAAEAAAD//wAAAAACAAEAAAD//wEAAAACAAEAAAD//wIAAAACAAEAAAD//wMAAAACAAEAAAAAAAMAAAACAAEAAAABAAIAAAACAAEAAAACAAEAAAACAAEAAAADAAEAAAACAAEAAAACAAIAAAACAAEAAAACAAMAAAACAAEAAAACAAQAAAACAAEAAAADAAMAAAACAAEAAAAEAAMAAAACAAEAAAAEAAQAAAACAAEAAAAEAAUAAAACAAEAAAA=")
+
+[node name="Creatures" type="Node2D" parent="." index="5" unique_id=1403352444]

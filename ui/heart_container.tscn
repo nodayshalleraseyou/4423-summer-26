@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cs5wcrnqy5ej7"]
+
+[ext_resource type="Texture2D" uid="uid://h4d3g528ql1s" path="res://sprites/heart.svg" id="1_hsrhq"]
+
+[node name="HeartContainer" type="TextureRect" unique_id=3452615]
+modulate = Color(0.95928675, 0.14688084, 0.34097925, 1)
+texture = ExtResource("1_hsrhq")

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="228.5482mm"
+   height="171.45798mm"
+   viewBox="0 0 228.5482 171.45798"
+   version="1.1"
+   id="svg1"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm">
+    <inkscape:page
+       x="2.1161968e-13"
+       y="0"
+       width="228.54822"
+       height="171.45798"
+       id="page2"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(37.513198,-395.04428)">
+    <rect
+       style="fill:#f9f9f9;stroke:none;stroke-width:0.264583"
+       id="rect1"
+       width="80.737862"
+       height="80.737862"
+       x="265.62769"
+       y="-454.78958"
+       transform="rotate(135)"
+       inkscape:export-filename="heart.svg"
+       inkscape:export-xdpi="96"
+       inkscape:export-ydpi="96" />
+    <rect
+       style="fill:#f9f9f9;stroke:none;stroke-width:0.374483"
+       id="rect2"
+       width="161.74031"
+       height="80.737862"
+       x="184.62524"
+       y="-454.78958"
+       transform="rotate(135)" />
+    <rect
+       style="fill:#f9f9f9;stroke:none;stroke-width:0.374177"
+       id="rect3"
+       width="80.737862"
+       height="161.47571"
+       x="265.62769"
+       y="-454.78958"
+       transform="rotate(135)" />
+  </g>
+</svg>
