@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c0n24mnc8l3g0"]
+
+[ext_resource type="Script" uid="uid://dssh5soua5ebq" path="res://scripts/cover_block.gd" id="1_1dljs"]
+[ext_resource type="PackedScene" uid="uid://cqp8dixv1j01u" path="res://core-scenes/cover.tscn" id="2_vlf0h"]
+
+[node name="HorzCover" type="Node2D" unique_id=1209593236]
+script = ExtResource("1_1dljs")
+
+[node name="Cover" parent="." unique_id=803466197 instance=ExtResource("2_vlf0h")]
+position = Vector2(0, -15)

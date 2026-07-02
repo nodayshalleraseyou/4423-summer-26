@@ -1,50 +1,51 @@
 [gd_scene format=3 uid="uid://d3fyrb28phfwg"]
 
-[ext_resource type="Script" uid="uid://coxajg6hqbkf6" path="res://scripts/main_menu.gd" id="1_ea7q2"]
-[ext_resource type="FontFile" uid="uid://cv8noqwvv0gyk" path="res://fonts/Nunito-Black.ttf" id="1_xbe5b"]
-[ext_resource type="PackedScene" uid="uid://c76ds386acjjx" path="res://ui/basic_button.tscn" id="2_0a1kd"]
+[ext_resource type="Script" uid="uid://coxajg6hqbkf6" path="res://scripts/main_menu.gd" id="1_0a1kd"]
+[ext_resource type="PackedScene" uid="uid://b06apg5la8uaf" path="res://UI/menu_button.tscn" id="1_xbe5b"]
+[ext_resource type="FontFile" uid="uid://cv8noqwvv0gyk" path="res://fonts/Nunito-Black.ttf" id="3_ea7q2"]
 
-[node name="MainMenu" type="Control" unique_id=1572483493]
+[node name="MainMenu" type="Control" unique_id=1213144292]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ea7q2")
+script = ExtResource("1_0a1kd")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1867543599]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=384172275]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.1600371, 0.532609, 0.56166404, 1)
+color = Color(0.1317971, 0.21116993, 0.24553013, 1)
 
-[node name="Label" type="Label" parent="." unique_id=162942333]
+[node name="PlayButton" parent="." unique_id=1992766608 instance=ExtResource("1_xbe5b")]
+layout_mode = 1
+
+[node name="QuitButton" parent="." unique_id=650649373 instance=ExtResource("1_xbe5b")]
+layout_mode = 1
+offset_top = 146.0
+offset_bottom = 291.0
+text = "Quit!"
+
+[node name="Label" type="Label" parent="." unique_id=186696394]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -245.0
-offset_top = 121.0
-offset_right = 245.0
-offset_bottom = 307.0
+offset_left = -313.0
+offset_top = 183.0
+offset_right = 314.0
+offset_bottom = 358.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("1_xbe5b")
-theme_override_font_sizes/font_size = 100
-text = "Ker' Blam!"
-
-[node name="PlayButton" parent="." unique_id=439907716 instance=ExtResource("2_0a1kd")]
-layout_mode = 1
-text = "Play"
-
-[node name="QuitButton" parent="." unique_id=339749364 instance=ExtResource("2_0a1kd")]
-layout_mode = 1
-offset_top = 104.0
-offset_bottom = 224.0
-text = "Quit"
+theme_override_fonts/font = ExtResource("3_ea7q2")
+theme_override_font_sizes/font_size = 128
+text = "kgbg"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

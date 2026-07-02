@@ -1,0 +1,28 @@
+[gd_scene format=4 uid="uid://bdr2brjnjikqv"]
+
+[ext_resource type="PackedScene" uid="uid://d187ceufbpja3" path="res://core-scenes/zone.tscn" id="1_581l6"]
+[ext_resource type="Material" uid="uid://b4wqnbfa8kttk" path="res://shaders/color_swap/color_swap_brick_walls.tres" id="2_umjt6"]
+[ext_resource type="Material" uid="uid://dv3u0gd76rfik" path="res://shaders/tile_variance/tile_variance_start.tres" id="3_umjt6"]
+
+[node name="start_zone" unique_id=930700268 instance=ExtResource("1_581l6")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=1126595220]
+modulate = Color(0.10375325, 0.109244175, 0.1406166, 1)
+
+[node name="Boundary" parent="." index="1" unique_id=2126314655]
+position = Vector2(-15, -15)
+
+[node name="BaseFloorLayer" parent="." index="2" unique_id=376478851]
+visible = false
+modulate = Color(0, 0, 0, 0.27058825)
+position = Vector2(-15, -15)
+tile_map_data = PackedByteArray("AAD9//z/AQAAAAEAAAD9//3/AQAAAAEAAAD9//7/AQAAAAEAAAD8//z/AQAAAAEAAAD8//3/AQAAAAEAAAD8//7/AQAAAAEAAAD+//z/AQAAAAEAAAD+//3/AQAAAAEAAAD+//7/AQAAAAEAAAD///z/AQAAAAEAAAD///3/AQAAAAEAAAD///7/AQAAAAEAAAAAAP3/AQAAAAEAAAABAP3/AQAAAAEAAAACAP3/AQAAAAEAAAADAP3/AQAAAAEAAAAEAP3/AQAAAAEAAAABAPz/AQAAAAEAAAACAPz/AQAAAAEAAAADAPz/AQAAAAEAAAAEAPz/AQAAAAEAAAD9////AQAAAAEAAAD8//v/AQAAAAEAAAD9//v/AQAAAAEAAAD+//v/AQAAAAEAAAD///v/AQAAAAEAAAAAAPz/AQAAAAEAAAABAPv/AQAAAAEAAAACAPv/AQAAAAEAAAADAPv/AQAAAAEAAAAEAPv/AQAAAAEAAAA=")
+
+[node name="FloorLayer" parent="." index="3" unique_id=1430944797]
+material = ExtResource("3_umjt6")
+position = Vector2(-15, -15)
+
+[node name="WallLayer" parent="." index="4" unique_id=1820316273]
+modulate = Color(1, 1, 1, 1)
+material = ExtResource("2_umjt6")
+position = Vector2(-15, -15)

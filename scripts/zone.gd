@@ -1,14 +1,12 @@
 extends Node2D
 class_name Zone
 
+@export var wall_layer : TileMapLayer
+
 @export var up_zone : String
 @export var down_zone : String
 @export var left_zone : String
 @export var right_zone : String
-
-@export var wall_layer : TileMapLayer
-
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

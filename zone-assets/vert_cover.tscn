@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://b26ju1y73vtdx"]
+
+[ext_resource type="Script" uid="uid://dssh5soua5ebq" path="res://scripts/cover_block.gd" id="1_78cjm"]
+[ext_resource type="PackedScene" uid="uid://cqp8dixv1j01u" path="res://core-scenes/cover.tscn" id="2_6pese"]
+
+[node name="VertCover" type="Node2D" unique_id=76327062]
+script = ExtResource("1_78cjm")
+
+[node name="Cover" parent="." unique_id=803466197 instance=ExtResource("2_6pese")]
+position = Vector2(15, 0)
+rotation = 1.5707964

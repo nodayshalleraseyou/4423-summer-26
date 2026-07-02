@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cs5wcrnqy5ej7"]
+
+[ext_resource type="Texture2D" uid="uid://dolwc4pcaaj7r" path="res://UI/heart.svg" id="1_cxfsp"]
+
+[node name="HeartContainer" type="TextureRect" unique_id=463283696]
+offset_right = 864.0
+offset_bottom = 648.0
+texture = ExtResource("1_cxfsp")

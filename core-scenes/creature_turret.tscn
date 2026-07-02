@@ -2,14 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://c3qtrgr8b7t1o" path="res://core-scenes/creature.tscn" id="1_33hck"]
 [ext_resource type="Texture2D" uid="uid://whdevuwlyg8y" path="res://sprites/turret_31.png" id="2_elpjf"]
-[ext_resource type="PackedScene" uid="uid://dfo7u0ynn4dug" path="res://core-scenes/blaster.tscn" id="3_q1r5b"]
+[ext_resource type="PackedScene" uid="uid://dfo7u0ynn4dug" path="res://items/blasters/blaster.tscn" id="3_q1r5b"]
 [ext_resource type="Script" uid="uid://dk4nruqm4qibp" path="res://scripts/turret_ai.gd" id="4_j6rc7"]
 
 [node name="Creature_Turret" unique_id=1103107907 node_paths=PackedStringArray("current_blaster") instance=ExtResource("1_33hck")]
 current_blaster = NodePath("Blaster")
 team = "robots"
 
-[node name="BodySprite" parent="." index="0" unique_id=234329956]
+[node name="BodySprite" parent="." index="1" unique_id=234329956]
 texture = ExtResource("2_elpjf")
 
 [node name="Blaster" parent="." index="2" unique_id=77867254 instance=ExtResource("3_q1r5b")]

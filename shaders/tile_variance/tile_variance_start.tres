@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://dv3u0gd76rfik"]
+
+[ext_resource type="Shader" uid="uid://di7m2wtmd3sxk" path="res://shaders/tile_variance/tile_variance.gdshader" id="1_l0owv"]
+
+[resource]
+shader = ExtResource("1_l0owv")
+shader_parameter/tile_size = Vector2(30, 30)
+shader_parameter/color_a = Color(0.40788642, 0.80838007, 0.85589623, 0.5019608)
+shader_parameter/color_b = Color(0, 0, 0, 0.1254902)

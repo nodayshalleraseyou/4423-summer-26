@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bq48l7q14gxtt"]
+
+[ext_resource type="PackedScene" uid="uid://dfo7u0ynn4dug" path="res://items/blasters/blaster.tscn" id="1_0ccpt"]
+
+[node name="BlasterLongJohn" unique_id=77867254 instance=ExtResource("1_0ccpt")]
+accuracy = 0.95
+shots = 1
+max_ammo = 1
+max_mags = 10
+projectile_turn_lifetime = 5
+
+[node name="BodySprite" parent="." index="0" unique_id=280199698]
+modulate = Color(1, 0, 0, 1)

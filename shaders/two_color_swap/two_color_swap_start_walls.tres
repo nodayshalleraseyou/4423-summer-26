@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bf6163x7wmuvn"]
+
+[ext_resource type="Shader" uid="uid://cdipoytalltyp" path="res://shaders/color_swap/color_swap.gdshader" id="1_8bih1"]
+
+[resource]
+shader = ExtResource("1_8bih1")
+shader_parameter/red_color = Color(0, 0, 0, 1)
+shader_parameter/green_color = Color(0, 0, 0, 1)
+shader_parameter/blue_color = Color(0, 0, 0, 1)
+shader_parameter/black_color = Color(0, 0, 0, 1)
+shader_parameter/white_color = Color(0, 0, 0, 1)

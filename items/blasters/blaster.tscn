@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://dfo7u0ynn4dug"]
+
+[ext_resource type="Script" uid="uid://db8l65ojltvc3" path="res://scripts/blaster.gd" id="1_3p6pi"]
+[ext_resource type="PackedScene" uid="uid://c1r0lkxrka7nh" path="res://core-scenes/projectile.tscn" id="2_2cf0d"]
+[ext_resource type="AudioStream" uid="uid://dofqgnui5u2if" path="res://audio/gun/gunshot_karl.wav" id="3_rvpd7"]
+[ext_resource type="Texture2D" uid="uid://bsd1cal1bbywu" path="res://sprites/muzzle_flash/muzzle_flash_17.png" id="4_2cf0d"]
+[ext_resource type="AudioStream" uid="uid://d3mgmedbevcyp" path="res://audio/gun/699993__artninja__seat_belt_clicking_sounds.wav" id="4_4k28x"]
+[ext_resource type="AudioStream" uid="uid://dugwd6mfi3dat" path="res://audio/gun/467605__triqystudio__closebag.wav" id="5_wxejt"]
+[ext_resource type="AudioStream" uid="uid://dh4tc5tkuwmr7" path="res://audio/gun/reload_adrian.wav" id="6_4k28x"]
+[ext_resource type="Texture2D" uid="uid://d0ulj7gx3up33" path="res://sprites/blaster30.png" id="7_4k28x"]
+[ext_resource type="Script" uid="uid://dmrhbyweyxel1" path="res://scripts/item_ai_blaster.gd" id="9_lv53q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvpd7"]
+atlas = ExtResource("4_2cf0d")
+region = Rect2(0, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpwgj"]
+atlas = ExtResource("4_2cf0d")
+region = Rect2(17, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxejt"]
+atlas = ExtResource("4_2cf0d")
+region = Rect2(34, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4k28x"]
+atlas = ExtResource("4_2cf0d")
+region = Rect2(51, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmtpv"]
+atlas = ExtResource("4_2cf0d")
+region = Rect2(68, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ev8ib"]
+atlas = ExtResource("4_2cf0d")
+region = Rect2(85, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p65wv"]
+atlas = ExtResource("4_2cf0d")
+region = Rect2(102, 0, 17, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3p6pi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvpd7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpwgj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxejt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4k28x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cmtpv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ev8ib")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p65wv")
+}],
+"loop": 0,
+"name": &"muzzle_flash",
+"speed": 60.0
+}]
+
+[node name="Blaster" type="Node2D" unique_id=77867254]
+script = ExtResource("1_3p6pi")
+projectile_ps = ExtResource("2_2cf0d")
+accuracy = 0.9
+shots = 2
+projectile_turn_lifetime = 4
+projectile_speed = 2.0
+shoot_sound = ExtResource("3_rvpd7")
+no_ammo_sound = ExtResource("4_4k28x")
+equip_sound = ExtResource("5_wxejt")
+reload_sound = ExtResource("6_4k28x")
+
+[node name="BodySprite" type="Sprite2D" parent="." unique_id=280199698]
+z_as_relative = false
+rotation = -1.5707964
+texture = ExtResource("7_4k28x")
+
+[node name="SpawnPoint" type="Node2D" parent="." unique_id=2041568220]
+position = Vector2(0, -12)
+
+[node name="MuzzleFlash" type="AnimatedSprite2D" parent="." unique_id=1248119310]
+modulate = Color(0.94187427, 0.76463825, 0, 1)
+z_index = 11
+texture_filter = 1
+position = Vector2(0, -13)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_3p6pi")
+animation = &"muzzle_flash"
+frame = 6
+frame_progress = 1.0
+
+[node name="ItemAI" type="Node2D" parent="." unique_id=1861117473]
+script = ExtResource("9_lv53q")
+
+[connection signal="animation_finished" from="MuzzleFlash" to="." method="_on_muzzle_flash_animation_finished"]

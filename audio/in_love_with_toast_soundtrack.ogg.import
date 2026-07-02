@@ -2,7 +2,7 @@
 
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
-uid="uid://x4jye5dly00d"
+uid="uid://cymtx0ei4kknq"
 path="res://.godot/imported/in_love_with_toast_soundtrack.ogg-5a849908b316c89970b872499fb7eed3.oggvorbisstr"
 
 [deps]
@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/in_love_with_toast_soundtrack.ogg-5a849908b31
 [params]
 
 loop=true
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

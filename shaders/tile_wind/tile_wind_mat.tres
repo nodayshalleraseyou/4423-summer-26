@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cpsgkbp0csod8"]
+
+[ext_resource type="Shader" uid="uid://chyxgj0gu868i" path="res://shaders/tile_wind/tile_wind.gdshader" id="1_0ydc6"]
+
+[resource]
+shader = ExtResource("1_0ydc6")
+shader_parameter/wind_strength = 1.0
+shader_parameter/offset_strength = 4.0
+shader_parameter/time_scale = 5.0
+shader_parameter/white_color = Color(0.14131069, 0.4411519, 0.39599985, 1)
+shader_parameter/red_color = Color(0, 0, 0, 1)
+shader_parameter/green_color = Color(0, 0, 0, 1)
+shader_parameter/blue_color = Color(0, 0, 0, 1)
+shader_parameter/black_color = Color(0, 0, 0, 1)

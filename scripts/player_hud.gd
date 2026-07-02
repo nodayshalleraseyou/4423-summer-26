@@ -1,21 +1,20 @@
 extends CanvasLayer
-class_name PlayerHUD
 
-var game_manager : GameManager
+@export var game_manager : GameManager
 
-@export var ammo_counter : AmmoCounter 
+@export var ammo_label : Label
+
 @export var health_bar : HealthBar
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	game_manager = get_tree().current_scene.get_node("GameManager")
-	health_bar = $Control/HealthBar
-	health_bar.set_max_health(game_manager.player_creature.max_health)
-	pass # Replace with function body.
-
+	health_bar.setup(game_manager.player_creature.max_health)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var player_creature : Creature = game_manager.player_creature
-	ammo_counter.set_ammo_count(player_creature.current_blaster.current_ammo,player_creature.current_blaster.max_ammo)
-	health_bar.set_current_health(player_creature.current_health)
+	if game_manager.player_creature.current_item is not Blaster:
+		return
+	ammo_label.text = str(game_manager.player_creature.current_item.current_ammo)\
+	 + "/" + str(game_manager.player_creature.current_item.max_ammo)
+	
+	health_bar.update_health_bar(game_manager.player_creature.current_health)

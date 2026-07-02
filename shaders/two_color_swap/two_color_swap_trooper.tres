@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://swfl64f7sc51"]
+
+[ext_resource type="Shader" uid="uid://cmeyin4jj0gqi" path="res://shaders/two_color_swap/two_color_swap.tres" id="1_hr3vn"]
+
+[resource]
+shader = ExtResource("1_hr3vn")
+shader_parameter/FillColor = Color(1, 1, 1, 1)
+shader_parameter/OutlineColor = Color(0, 0, 0, 1)

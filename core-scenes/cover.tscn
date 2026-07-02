@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cqp8dixv1j01u"]
+
+[ext_resource type="Script" uid="uid://b8nqkvu2qofy4" path="res://scripts/cover.gd" id="1_tts2y"]
+[ext_resource type="Texture2D" uid="uid://d20cebmhluwvl" path="res://sprites/cover_sausage.png" id="2_8ej2q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqes3"]
+size = Vector2(28, 11)
+
+[node name="Cover" type="Area2D" unique_id=803466197]
+script = ExtResource("1_tts2y")
+
+[node name="CoverSausage" type="Sprite2D" parent="." unique_id=1185111301]
+z_index = 3
+z_as_relative = false
+texture = ExtResource("2_8ej2q")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=204277209]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_tqes3")

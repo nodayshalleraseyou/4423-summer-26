@@ -1,20 +1,136 @@
 [gd_scene format=3 uid="uid://c3qtrgr8b7t1o"]
 
+[ext_resource type="Texture2D" uid="uid://c06wv1s3ceqno" path="res://sprites/shadow.png" id="2_0ynqa"]
 [ext_resource type="Script" uid="uid://ddi0fup2gh7us" path="res://scripts/creature.gd" id="2_6bpdb"]
 [ext_resource type="Texture2D" uid="uid://tcbvvsvfedpr" path="res://sprites/cyclops.png" id="2_pd5d6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6bpdb"]
-size = Vector2(13, 17)
+size = Vector2(25, 28)
+
+[sub_resource type="Animation" id="Animation_e6viy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HeadSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TorsoSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wnt48"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HeadSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(0, 0, 0, 0, 0),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 1), Vector2(0, 2), Vector2(0, 1), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TorsoSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(0, 0, 0),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 1), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6bpdb"]
+resource_name = "walk"
+length = 0.25
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HeadSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15),
+"transitions": PackedFloat32Array(0, 0, 0),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -1), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TorsoSprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2),
+"transitions": PackedFloat32Array(0, 0, 0),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -1), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sdm4y"]
+_data = {
+&"RESET": SubResource("Animation_e6viy"),
+&"idle": SubResource("Animation_wnt48"),
+&"walk": SubResource("Animation_6bpdb")
+}
 
 [node name="Creature" type="Area2D" unique_id=1103107907]
+z_index = 1
+z_as_relative = false
 script = ExtResource("2_6bpdb")
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1141853083]
+modulate = Color(0, 0, 0, 0.5019608)
+z_as_relative = false
+texture = ExtResource("2_0ynqa")
 
 [node name="BodySprite" type="Sprite2D" parent="." unique_id=234329956]
 modulate = Color(0.52211124, 0.89317214, 0.9992078, 1)
+z_as_relative = false
 texture = ExtResource("2_pd5d6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1308798709]
-position = Vector2(0.5, -0.5)
+z_as_relative = false
 shape = SubResource("RectangleShape2D_6bpdb")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1120075348]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1023920697]
+z_index = 2
+z_as_relative = false
+
+[node name="TorsoSprite" type="Sprite2D" parent="." unique_id=1606339371]
+z_index = 6
+z_as_relative = false
+
+[node name="HeadSprite" type="Sprite2D" parent="." unique_id=1435782218]
+z_index = 7
+z_as_relative = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=346666770]
+libraries/ = SubResource("AnimationLibrary_sdm4y")
+
+[node name="Inventory" type="Node2D" parent="." unique_id=1803904621]

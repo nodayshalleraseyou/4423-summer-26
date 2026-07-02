@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://r8tjl7sdmjdq"]
+
+[ext_resource type="PackedScene" uid="uid://c3qtrgr8b7t1o" path="res://core-scenes/creature.tscn" id="1_efyq0"]
+[ext_resource type="Material" uid="uid://swfl64f7sc51" path="res://shaders/two_color_swap/two_color_swap_trooper.tres" id="2_gce4x"]
+[ext_resource type="Texture2D" uid="uid://cct3ys1skqyhj" path="res://sprites/animations/trooper_idle_30.png" id="3_gce4x"]
+[ext_resource type="Texture2D" uid="uid://cbvthnywrm0k8" path="res://sprites/creature-legs/biped_legs.png" id="4_bwbfc"]
+[ext_resource type="Script" uid="uid://cuuxy8wrx1mcf" path="res://ai_grunt.gd" id="5_r0cjl"]
+[ext_resource type="Texture2D" uid="uid://v1d1khy77wql" path="res://sprites/creature-torsos/zipper_torso.png" id="7_bwbfc"]
+[ext_resource type="PackedScene" uid="uid://dgm75vw8icvrq" path="res://items/blasters/blaster_buster.tscn" id="8_2ndol"]
+[ext_resource type="Texture2D" uid="uid://b2n7jh35lay2u" path="res://sprites/creature-heads/bucket_head.png" id="8_nan7y"]
+[ext_resource type="PackedScene" uid="uid://bq48l7q14gxtt" path="res://items/blasters/blaster_long_john.tscn" id="9_nan7y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ai06a"]
+atlas = ExtResource("3_gce4x")
+region = Rect2(0, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4pga"]
+atlas = ExtResource("3_gce4x")
+region = Rect2(30, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bwbfc"]
+atlas = ExtResource("3_gce4x")
+region = Rect2(60, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nan7y"]
+atlas = ExtResource("3_gce4x")
+region = Rect2(90, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ndol"]
+atlas = ExtResource("4_bwbfc")
+region = Rect2(0, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecspg"]
+atlas = ExtResource("4_bwbfc")
+region = Rect2(30, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qwtg"]
+atlas = ExtResource("4_bwbfc")
+region = Rect2(60, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jgg7c"]
+atlas = ExtResource("4_bwbfc")
+region = Rect2(90, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycdop"]
+atlas = ExtResource("4_bwbfc")
+region = Rect2(120, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0blx"]
+atlas = ExtResource("4_bwbfc")
+region = Rect2(150, 0, 30, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_etw3m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ai06a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4pga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bwbfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nan7y")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ndol")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecspg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qwtg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jgg7c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycdop")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0blx")
+}],
+"loop": 0,
+"name": &"walk",
+"speed": 20.0
+}]
+
+[node name="TrooperCreature" unique_id=1103107907 instance=ExtResource("1_efyq0")]
+
+[node name="Shadow" parent="." index="0" unique_id=1141853083]
+position = Vector2(3.5762787e-07, 1)
+scale = Vector2(0.58064514, 1)
+
+[node name="BodySprite" parent="." index="1" unique_id=234329956]
+visible = false
+
+[node name="AnimatedSprite2D" parent="." index="3" unique_id=1023920697]
+material = ExtResource("2_gce4x")
+sprite_frames = SubResource("SpriteFrames_etw3m")
+animation = &"walk"
+frame_progress = 1.0
+
+[node name="GruntAI" type="Node2D" parent="." index="4" unique_id=1436971912]
+script = ExtResource("5_r0cjl")
+
+[node name="TorsoSprite" parent="." index="5" unique_id=1606339371]
+texture = ExtResource("7_bwbfc")
+
+[node name="HeadSprite" parent="." index="6" unique_id=1435782218]
+texture = ExtResource("8_nan7y")
+
+[node name="Blaster" parent="Inventory" parent_id_path=PackedInt32Array(1803904621) index="0" unique_id=77867254 instance=ExtResource("8_2ndol")]
+
+[node name="Blaster_LongJohn" parent="Inventory" parent_id_path=PackedInt32Array(1803904621) index="1" unique_id=179999323 instance=ExtResource("9_nan7y")]

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dgm75vw8icvrq"]
+
+[ext_resource type="PackedScene" uid="uid://dfo7u0ynn4dug" path="res://items/blasters/blaster.tscn" id="1_crxj2"]
+
+[node name="BlasterBuster" unique_id=77867254 instance=ExtResource("1_crxj2")]
+projectiles_per_shot = 3
+projectile_turn_lifetime = 2
+projectile_speed = 1.0
+
+[node name="BodySprite" parent="." index="0" unique_id=280199698]
+modulate = Color(4.764944e-06, 0.63239956, 0.4415605, 1)

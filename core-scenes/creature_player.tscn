@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://cevq1x1pvwd2b"]
+
+[ext_resource type="PackedScene" uid="uid://c3qtrgr8b7t1o" path="res://core-scenes/creature.tscn" id="1_5pcm1"]
+[ext_resource type="Texture2D" uid="uid://v1d1khy77wql" path="res://sprites/creature-torsos/zipper_torso.png" id="2_v6itu"]
+[ext_resource type="Texture2D" uid="uid://cbvthnywrm0k8" path="res://sprites/creature-legs/biped_legs.png" id="2_xlwhb"]
+[ext_resource type="Texture2D" uid="uid://cyhr01as1rsu2" path="res://sprites/creature-heads/block_head.png" id="4_v6itu"]
+[ext_resource type="PackedScene" uid="uid://dfo7u0ynn4dug" path="res://items/blasters/blaster.tscn" id="5_e75yd"]
+[ext_resource type="PackedScene" uid="uid://bq48l7q14gxtt" path="res://items/blasters/blaster_long_john.tscn" id="5_lqm16"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88r2x"]
+atlas = ExtResource("2_xlwhb")
+region = Rect2(0, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6itu"]
+atlas = ExtResource("2_xlwhb")
+region = Rect2(0, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e75yd"]
+atlas = ExtResource("2_xlwhb")
+region = Rect2(30, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqm16"]
+atlas = ExtResource("2_xlwhb")
+region = Rect2(60, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3ecg"]
+atlas = ExtResource("2_xlwhb")
+region = Rect2(90, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o7coj"]
+atlas = ExtResource("2_xlwhb")
+region = Rect2(120, 0, 30, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcjd3"]
+atlas = ExtResource("2_xlwhb")
+region = Rect2(150, 0, 30, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qq7nx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88r2x")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6itu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e75yd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqm16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3ecg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o7coj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcjd3")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 20.0
+}]
+
+[node name="PlayerCreature" unique_id=1103107907 instance=ExtResource("1_5pcm1")]
+team = "player"
+
+[node name="Shadow" parent="." index="0" unique_id=1141853083]
+position = Vector2(2.9802322e-08, 1)
+scale = Vector2(0.54838705, 1)
+
+[node name="BodySprite" parent="." index="1" unique_id=234329956]
+visible = false
+
+[node name="AnimatedSprite2D" parent="." index="3" unique_id=1023920697]
+sprite_frames = SubResource("SpriteFrames_qq7nx")
+animation = &"walk"
+frame_progress = 0.10232142
+
+[node name="TorsoSprite" parent="." index="4" unique_id=1606339371]
+texture = ExtResource("2_v6itu")
+
+[node name="HeadSprite" parent="." index="5" unique_id=1435782218]
+texture = ExtResource("4_v6itu")
+
+[node name="Blaster" parent="Inventory" parent_id_path=PackedInt32Array(1803904621) index="0" unique_id=723827999 instance=ExtResource("5_e75yd")]
+
+[node name="Blaster_LongJohn" parent="Inventory" parent_id_path=PackedInt32Array(1803904621) index="1" unique_id=77867254 instance=ExtResource("5_lqm16")]

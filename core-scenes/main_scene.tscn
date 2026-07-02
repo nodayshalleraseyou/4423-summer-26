@@ -1,70 +1,77 @@
 [gd_scene format=3 uid="uid://dgfph5hoyxpul"]
 
-[ext_resource type="AudioStream" uid="uid://x4jye5dly00d" path="res://audio/in_love_with_toast_soundtrack.ogg" id="1_4xu26"]
 [ext_resource type="Script" uid="uid://y55fyv8472hx" path="res://scripts/player_input_handler.gd" id="1_h6be7"]
 [ext_resource type="Script" uid="uid://3nlqw06iwnd4" path="res://scripts/game_manager.gd" id="1_j6f26"]
-[ext_resource type="PackedScene" uid="uid://b0k7ce6rxgxvh" path="res://zones/start_zone.tscn" id="4_06n6w"]
-[ext_resource type="PackedScene" uid="uid://dfo7u0ynn4dug" path="res://core-scenes/blaster.tscn" id="5_1opnj"]
+[ext_resource type="PackedScene" uid="uid://df15r5mbt8vu3" path="res://zones/start_zone.tscn" id="3_06n6w"]
 [ext_resource type="Script" uid="uid://di3mvq11pj30e" path="res://scripts/aim_guide.gd" id="6_kvclw"]
-[ext_resource type="PackedScene" uid="uid://cevq1x1pvwd2b" path="res://player_creature.tscn" id="7_4xu26"]
+[ext_resource type="PackedScene" uid="uid://cevq1x1pvwd2b" path="res://core-scenes/creature_player.tscn" id="7_fy7it"]
 [ext_resource type="Texture2D" uid="uid://b7dpaxcnpq5iw" path="res://sprites/square_31.png" id="7_kvclw"]
 [ext_resource type="Script" uid="uid://c0p8frkmu7by5" path="res://scripts/projectile_manager.gd" id="8_wvdjy"]
+[ext_resource type="FontFile" uid="uid://bnsiuxrtb8vu0" path="res://fonts/Nunito-VariableFont_wght.ttf" id="10_4xu26"]
 [ext_resource type="Texture2D" uid="uid://dhubr3abgg1ws" path="res://Screenshot_20260609_002520.png" id="10_06n6w"]
-[ext_resource type="PackedScene" uid="uid://jdnbxgt42vwm" path="res://ui/player_hud.tscn" id="11_4xu26"]
+[ext_resource type="Script" uid="uid://dyywkaos0i8nd" path="res://scripts/player_hud.gd" id="10_dpbtt"]
+[ext_resource type="Script" uid="uid://w152k11lm0lu" path="res://scripts/audio_pool.gd" id="11_xne4m"]
+[ext_resource type="Script" uid="uid://isl68skqtixw" path="res://scripts/health_bar.gd" id="12_dpbtt"]
+[ext_resource type="PackedScene" uid="uid://cs5wcrnqy5ej7" path="res://UI/heart_container.tscn" id="13_4pdor"]
+[ext_resource type="Material" uid="uid://cmjdolk6agyd1" path="res://shaders/ground_fog/ground_fog_mat.tres" id="16_jgl0h"]
+[ext_resource type="Shader" uid="uid://6ysg0twlfusq" path="res://shaders/post_process.gdshader" id="16_ud3a2"]
+[ext_resource type="Shader" uid="uid://ck3qfsqqg24je" path="res://shaders/flame.gdshader" id="18_f3wiy"]
+[ext_resource type="Texture2D" uid="uid://ck46ii4nk25vj" path="res://kenny/essentials/Noise/perlin-noise.png" id="19_ysryb"]
+[ext_resource type="Shader" uid="uid://be1t8h0hk21h0" path="res://shaders/self_texture_teest.gdshader" id="20_j8lea"]
+[ext_resource type="Texture2D" uid="uid://d0ulj7gx3up33" path="res://sprites/blaster30.png" id="21_240fg"]
+[ext_resource type="Shader" uid="uid://i4rio0wonxt8" path="res://shaders/target_stripes/target_stripes.gdshader" id="22_fy7it"]
+[ext_resource type="Texture2D" uid="uid://culsr8op1xqlj" path="res://sprites/square_30.png" id="23_lyi2w"]
+[ext_resource type="PackedScene" uid="uid://c0n24mnc8l3g0" path="res://zone-assets/horz_cover.tscn" id="24_4ayts"]
+[ext_resource type="PackedScene" uid="uid://r8tjl7sdmjdq" path="res://core-scenes/creature_trooper.tscn" id="24_7luio"]
+[ext_resource type="Shader" uid="uid://dk0j7kugq22cg" path="res://shaders/droplet_shader/droplet.gdshader" id="24_lyi2w"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jgl0h"]
+shader = ExtResource("16_ud3a2")
+shader_parameter/glow_size = 20.0
+shader_parameter/glow_strength = 3.5490001685775
+shader_parameter/threshold = 0.95600004541
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ud3a2"]
+shader = ExtResource("18_f3wiy")
+shader_parameter/noise_texture = ExtResource("19_ysryb")
+shader_parameter/scroll_speed = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ysryb"]
+shader = ExtResource("20_j8lea")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ayts"]
+shader = ExtResource("22_fy7it")
+shader_parameter/scroll_speed = 8.0
+shader_parameter/alpha = 1.115
+shader_parameter/color = Color(1, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uufy0"]
+shader = ExtResource("24_lyi2w")
+shader_parameter/time_scale = 1.0
 
 [node name="MainScene" type="Node2D" unique_id=148360280]
-
-[node name="MusicBox" type="AudioStreamPlayer2D" parent="." unique_id=1836176500]
-visible = false
-stream = ExtResource("1_4xu26")
-volume_db = -80.0
-autoplay = true
 
 [node name="PlayerInputHandler" type="Node2D" parent="." unique_id=1444398628 node_paths=PackedStringArray("game_manager")]
 script = ExtResource("1_h6be7")
 game_manager = NodePath("../GameManager")
 
-[node name="GameManager" type="Node2D" parent="." unique_id=1964262786 node_paths=PackedStringArray("projectile_manager", "camera", "player_creature", "current_zone")]
-position = Vector2(-1, 0)
+[node name="GameManager" type="Node2D" parent="." unique_id=1964262786 node_paths=PackedStringArray("player_creature", "projectile_manager", "main_camera", "audio_pool", "current_zone")]
 script = ExtResource("1_j6f26")
-projectile_manager = NodePath("../ProjectileManager")
-camera = NodePath("../Camera2D")
 player_creature = NodePath("../Creatures/PlayerCreature")
+projectile_manager = NodePath("../ProjectileManager")
+main_camera = NodePath("../Camera2D")
+audio_pool = NodePath("../AudioPool")
 current_zone = NodePath("../start_zone")
 
-[node name="start_zone" parent="." unique_id=1533148381 instance=ExtResource("4_06n6w")]
+[node name="AudioPool" type="Node2D" parent="." unique_id=1759462931]
+script = ExtResource("11_xne4m")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=745856702]
-zoom = Vector2(2, 2)
+[node name="start_zone" parent="." unique_id=930700268 instance=ExtResource("3_06n6w")]
 
-[node name="Sprite2D2" type="Sprite2D" parent="Camera2D" unique_id=148803402]
-modulate = Color(0.12955844, 0.12955847, 0.12955841, 1)
-position = Vector2(-476.50174, 0)
-scale = Vector2(13.77408, 40.893)
-texture = ExtResource("7_kvclw")
-
-[node name="Sprite2D3" type="Sprite2D" parent="Camera2D" unique_id=558304185]
-modulate = Color(0.12955844, 0.12955847, 0.12955841, 1)
-position = Vector2(476.502, 0)
-scale = Vector2(13.77408, 40.893)
-texture = ExtResource("7_kvclw")
-
-[node name="Sprite2D4" type="Sprite2D" parent="Camera2D" unique_id=445140089]
-modulate = Color(0.12955844, 0.12955847, 0.12955841, 1)
-position = Vector2(0, 448.421)
-scale = Vector2(44.451622, 11.962628)
-texture = ExtResource("7_kvclw")
-
-[node name="Sprite2D5" type="Sprite2D" parent="Camera2D" unique_id=1214514576]
-modulate = Color(0.12955844, 0.12955847, 0.12955841, 1)
-position = Vector2(0, -448.421)
-scale = Vector2(44.451622, 11.962628)
-texture = ExtResource("7_kvclw")
-
-[node name="AimGuide" type="Node2D" parent="." unique_id=313500541 node_paths=PackedStringArray("player_creature")]
+[node name="AimGuide" type="Node2D" parent="." unique_id=313500541 node_paths=PackedStringArray("game_manager")]
 visible = false
 script = ExtResource("6_kvclw")
-player_creature = NodePath("../Creatures/PlayerCreature")
+game_manager = NodePath("../GameManager")
 
 [node name="RightPivot" type="Node2D" parent="AimGuide" unique_id=1725368708]
 
@@ -84,17 +91,160 @@ texture = ExtResource("7_kvclw")
 [node name="Creatures" type="Node2D" parent="." unique_id=1023471411]
 metadata/_edit_group_ = true
 
-[node name="PlayerCreature" parent="Creatures" unique_id=1103107907 node_paths=PackedStringArray("current_blaster") instance=ExtResource("7_4xu26")]
-is_player_creature = true
-current_blaster = NodePath("Blaster")
-
-[node name="Blaster" parent="Creatures/PlayerCreature" unique_id=77867254 instance=ExtResource("5_1opnj")]
+[node name="PlayerCreature" parent="Creatures" unique_id=1103107907 instance=ExtResource("7_fy7it")]
+z_index = 0
+z_as_relative = true
 
 [node name="ProjectileManager" type="Node2D" parent="." unique_id=1171213707]
 script = ExtResource("8_wvdjy")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=745856702]
+zoom = Vector2(2, 2)
+
+[node name="Cover" type="Node2D" parent="Camera2D" unique_id=1949988161]
+
+[node name="LeftCover" type="Sprite2D" parent="Camera2D/Cover" unique_id=148803402]
+modulate = Color(0.07450981, 0.078431375, 0.101960786, 1)
+position = Vector2(-475.99997, 0.99999994)
+scale = Vector2(14.258064, 40.893)
+texture = ExtResource("7_kvclw")
+
+[node name="RightCover" type="Sprite2D" parent="Camera2D/Cover" unique_id=558304185]
+modulate = Color(0.07450981, 0.078431375, 0.101960786, 1)
+position = Vector2(472.00012, 0)
+scale = Vector2(14.064524, 40.893)
+texture = ExtResource("7_kvclw")
+
+[node name="BottomCover" type="Sprite2D" parent="Camera2D/Cover" unique_id=445140089]
+modulate = Color(0.07450981, 0.078431375, 0.101960786, 1)
+position = Vector2(0, 443.92087)
+scale = Vector2(44.451622, 12.252957)
+texture = ExtResource("7_kvclw")
+
+[node name="TopCover" type="Sprite2D" parent="Camera2D/Cover" unique_id=1214514576]
+modulate = Color(0.07450981, 0.078431375, 0.101960786, 1)
+position = Vector2(0, -444.42084)
+scale = Vector2(44.451622, 12.2207)
+texture = ExtResource("7_kvclw")
 
 [node name="Screenshot20260609002520" type="Sprite2D" parent="." unique_id=773708893]
 position = Vector2(-3081, 1035)
 texture = ExtResource("10_06n6w")
 
-[node name="PlayerHUD" parent="." unique_id=471060538 instance=ExtResource("11_4xu26")]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=954913123 node_paths=PackedStringArray("game_manager", "ammo_label", "health_bar")]
+script = ExtResource("10_dpbtt")
+game_manager = NodePath("../GameManager")
+ammo_label = NodePath("Control/AmmoText")
+health_bar = NodePath("Control/HealthBar")
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1976856533]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AmmoText" type="Label" parent="CanvasLayer/Control" unique_id=515286223]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 31.0
+offset_top = -181.0
+offset_right = 248.0
+offset_bottom = -26.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("10_4xu26")
+theme_override_font_sizes/font_size = 40
+text = "10 / 10"
+vertical_alignment = 2
+
+[node name="HealthBar" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1366253683]
+layout_mode = 0
+offset_left = 31.0
+offset_top = 31.0
+offset_right = 895.0
+offset_bottom = 679.0
+scale = Vector2(0.1, 0.1)
+theme_override_constants/separation = 48
+script = ExtResource("12_dpbtt")
+on_color = Color(0.82019466, 0, 0.29289865, 1)
+heart_container_ps = ExtResource("13_4pdor")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control" unique_id=546026745]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.007107781, 0.011282137, 0.2509804)
+
+[node name="PostProcess" type="CanvasLayer" parent="." unique_id=239921598]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="PostProcess" unique_id=1474895946]
+material = SubResource("ShaderMaterial_jgl0h")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ShaderGoofs" type="Node2D" parent="." unique_id=655301685]
+visible = false
+
+[node name="ColorRect2" type="ColorRect" parent="ShaderGoofs" unique_id=475341436]
+material = SubResource("ShaderMaterial_ud3a2")
+offset_left = -1.0
+offset_top = -27.0
+offset_right = 39.0
+offset_bottom = 13.0
+
+[node name="Sprite2D" type="Sprite2D" parent="ShaderGoofs" unique_id=1078194262]
+material = SubResource("ShaderMaterial_ysryb")
+position = Vector2(401, 58)
+texture = ExtResource("21_240fg")
+
+[node name="NoiseLayer" type="Sprite2D" parent="ShaderGoofs" unique_id=1832503866]
+visible = false
+material = ExtResource("16_jgl0h")
+position = Vector2(-15, -15)
+scale = Vector2(247.748, 247.748)
+texture = ExtResource("7_kvclw")
+
+[node name="Square30" type="Sprite2D" parent="." unique_id=193094874]
+visible = false
+material = SubResource("ShaderMaterial_4ayts")
+position = Vector2(-60, -59.999996)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("23_lyi2w")
+
+[node name="Square31" type="Sprite2D" parent="." unique_id=1433943185]
+visible = false
+material = SubResource("ShaderMaterial_4ayts")
+position = Vector2(-60, -29.999998)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("23_lyi2w")
+
+[node name="Square32" type="Sprite2D" parent="." unique_id=625786855]
+visible = false
+material = SubResource("ShaderMaterial_4ayts")
+position = Vector2(-30, -29.999998)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("23_lyi2w")
+
+[node name="Square33" type="Sprite2D" parent="." unique_id=687668484]
+visible = false
+material = SubResource("ShaderMaterial_uufy0")
+position = Vector2(629.99994, 0)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("23_lyi2w")
+
+[node name="HorzCover" parent="." unique_id=1209593236 instance=ExtResource("24_4ayts")]
+position = Vector2(-30, 60)
+
+[node name="TrooperCreature" parent="." unique_id=1212599025 instance=ExtResource("24_7luio")]
+position = Vector2(180, 0)
